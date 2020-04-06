@@ -59,7 +59,9 @@ function displayContactDetails(addressBookToDisplay) { //seperate UI function to
   contactsList.html(htmlForContactInfo); //?? locates variable shortcut in html and fills in space-holder for user input
 };
 
+
 $(document).ready(function() {
+  attachContactListeners();
   $("form#new-contact").submit(function(event) {
     event.preventDefault();
     var inputtedFirstName = $("input#new-first-name").val();
@@ -70,3 +72,8 @@ $(document).ready(function() {
     displayContactDetails(addressBook);
   })
 })
+function attachContactListeners() {
+  $("ul#contacts").on("click", "li", function() {
+    console.log("The id of this <li> is " + this.id + ".");
+  });
+};
